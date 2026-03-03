@@ -71,7 +71,7 @@ pipeline {
       steps {
         dir('app') {
           script {
-            gv.deployApp()
+            gv.deployApp(params.DOCKER_IMAGE, env.BRANCH_NAME)
           }
         }
       }

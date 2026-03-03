@@ -1,10 +1,14 @@
 def testApp() {
-    echo 'testing the application...'
-    sh 'mvn test'
+  echo 'testing the application...'
+  sh 'mvn test'
 }
 
-def deployApp() {
-    echo 'deploying the application...'
+def deployApp(String image, String tag) {
+  echo 'deploying the application...'
+  def dockerCmd = "docker run -p 3080:3080 -d ${image}:${tag}"
+  sshagent(['aws-ec2']) {
+    sh "ssh -o StrictHostKeyChecking=no ec2-user@54.93.40.224 ${dockerCmd}"
+  }
 }
 
 return this
