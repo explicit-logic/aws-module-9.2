@@ -1,6 +1,6 @@
 FROM amazoncorretto:17-alpine-jdk
 
-EXPOSE 3080
+EXPOSE 8080
 
 WORKDIR /usr/app
 COPY ./target/app-*.jar ./app.jar

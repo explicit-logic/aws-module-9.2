@@ -96,7 +96,7 @@ Type: SSH
 
 Source: `<Jenkins-IP>/32`
 
-> Add custom port `3080` as well
+> Add custom port `8080` as well
 
 ![](./images/firewall.png)
 

@@ -5,7 +5,7 @@ def testApp() {
 
 def deployApp(String image, String tag) {
   echo 'deploying the application...'
-  def dockerCmd = "docker run -p 3080:3080 -d ${image}:${tag}"
+  def dockerCmd = "docker run -p 8080:8080 -d ${image}:${tag}"
   sshagent(['aws-ec2']) {
     sh "ssh -o StrictHostKeyChecking=no ec2-user@54.93.40.224 ${dockerCmd}"
   }
