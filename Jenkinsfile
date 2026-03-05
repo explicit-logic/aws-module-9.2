@@ -18,6 +18,7 @@ pipeline {
   }
   parameters {
     string(name: 'DOCKER_IMAGE', defaultValue: 'explicitlogic/app')
+    string(name: 'EC2_PUBLIC_IP', defaultValue: '54.93.40.224')
   }
   stages {
     stage("init") {
@@ -71,7 +72,7 @@ pipeline {
       steps {
         dir('app') {
           script {
-            gv.deployApp(params.DOCKER_IMAGE, env.BRANCH_NAME)
+            gv.deployApp([image: params.DOCKER_IMAGE, tag: env.BRANCH_NAME], params.EC2_PUBLIC_IP)
           }
         }
       }

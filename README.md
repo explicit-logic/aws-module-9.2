@@ -87,8 +87,7 @@ sshagent(['aws-ec2']) {
 
 See the full code at `app/script.groovy` (`deployApp`)
 
-4. Add Jenkins IP address to firewall rules on the EC2 instance
-
+### Configure security group on EC2 Instance to allow access to our web application
 
 Edit inbound rules -> Add rule
 
@@ -100,4 +99,7 @@ Source: `<Jenkins-IP>/32`
 
 ![](./images/firewall.png)
 
+- Run pipeline job and see the results
+
+Navigate to `<EC2_PUBLIC_IP>:8080`
 

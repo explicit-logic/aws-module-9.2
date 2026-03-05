@@ -3,11 +3,11 @@ def testApp() {
   sh 'mvn test'
 }
 
-def deployApp(String image, String tag) {
+def deployApp(Map dockerImage, String ipAddress) {
   echo 'deploying the application...'
-  def dockerCmd = "docker run -p 8080:8080 -d ${image}:${tag}"
+  def dockerCmd = "docker run -p 8080:8080 -d ${dockerImage.image}:${dockerImage.tag}"
   sshagent(['aws-ec2']) {
-    sh "ssh -o StrictHostKeyChecking=no ec2-user@54.93.40.224 ${dockerCmd}"
+    sh "ssh -o StrictHostKeyChecking=no ec2-user@${ipAddress} ${dockerCmd}"
   }
 }
 
